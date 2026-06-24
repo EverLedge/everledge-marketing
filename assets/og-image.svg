@@ -1,0 +1,8 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#131D27"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#C9A84C"/>
+  <text x="600" y="260" font-family="Georgia, serif" font-size="72" font-weight="600" fill="#FFFFFF" text-anchor="middle" letter-spacing="-2">EverLedge</text>
+  <text x="600" y="340" font-family="Georgia, serif" font-size="28" fill="#C9A84C" text-anchor="middle" letter-spacing="1">Your estate, organised and protected.</text>
+  <text x="600" y="420" font-family="Georgia, serif" font-size="20" fill="rgba(255,255,255,0.45)" text-anchor="middle">Track gifts · Plan for IHT · Organise for your executors</text>
+  <text x="600" y="570" font-family="Georgia, serif" font-size="16" fill="rgba(255,255,255,0.25)" text-anchor="middle">everledge.co.uk</text>
+</svg>
