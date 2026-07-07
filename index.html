@@ -608,8 +608,81 @@
   </div>
 </section>
 
+<!-- Signup modal -->
+<div id="signup-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(10,15,24,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#fff;border-radius:16px;padding:40px;width:100%;max-width:400px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.18);">
+    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#888;font-size:20px;line-height:1;padding:4px;">✕</button>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+      <img src="/assets/everledge-mark-gold.png" alt="" style="width:28px;height:28px;">
+      <span style="font-weight:600;font-size:1.05rem;color:#131D27;letter-spacing:-0.02em;">EverLedge®</span>
+    </div>
+    <h2 style="margin:0 0 6px;font-size:1.35rem;font-weight:600;color:#131D27;letter-spacing:-0.02em;">Get started free</h2>
+    <p style="margin:0 0 24px;font-size:14px;color:#666;">No credit card required.</p>
+
+    <div id="modal-alert" style="display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:16px;background:#FEE2E2;border:1px solid #E9CFCD;color:#B91C1C;"></div>
+
+    <button id="modal-google-btn" onclick="signInWithGoogle()" style="width:100%;height:44px;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;font-family:inherit;transition:box-shadow 140ms;">
+      <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+      Continue with Google
+    </button>
+
+    <div style="display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#999;font-size:12px;">
+      <div style="flex:1;height:1px;background:#e5e7eb;"></div>or<div style="flex:1;height:1px;background:#e5e7eb;"></div>
+    </div>
+
+    <a href="https://app.everledge.co.uk/signup" style="width:100%;height:44px;background:#131D27;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;font-family:inherit;">Sign up with email</a>
+
+    <p style="margin:16px 0 0;font-size:12px;color:#999;text-align:center;">Already have an account? <a href="https://app.everledge.co.uk" style="color:#131D27;font-weight:500;">Sign in</a></p>
+    <p style="margin:12px 0 0;font-size:11px;color:#bbb;text-align:center;line-height:1.5;">By continuing you agree to EverLedge's <a href="/terms" style="color:#bbb;">Terms</a> and <a href="/privacy" style="color:#bbb;">Privacy Policy</a>.</p>
+  </div>
+</div>
+
 <script>
   lucide.createIcons();
+
+  const SUPABASE_URL = 'https://vzanekapmmnjspbbydek.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_eOFaGkpTlT2x8c6wA_mUyg_mb_9b2Mu';
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    const m = document.getElementById('signup-modal');
+    m.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    const m = document.getElementById('signup-modal');
+    m.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('signup-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  async function signInWithGoogle() {
+    const btn = document.getElementById('modal-google-btn');
+    const alertEl = document.getElementById('modal-alert');
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const { error } = await sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: 'https://app.everledge.co.uk/' },
+    });
+    if (error) {
+      alertEl.textContent = error.message;
+      alertEl.style.display = 'block';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+  }
+
+  // Wire up all "Get started" buttons to open the modal
+  document.querySelectorAll('a[href="https://app.everledge.co.uk/signup"]').forEach(el => {
+    el.addEventListener('click', openModal);
+  });
 </script>
 </body>
 </html>
