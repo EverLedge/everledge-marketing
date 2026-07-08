@@ -661,22 +661,9 @@
     if (e.key === 'Escape') closeModal();
   });
 
-  async function signInWithGoogle() {
-    const btn = document.getElementById('modal-google-btn');
-    const alertEl = document.getElementById('modal-alert');
-    btn.disabled = true;
-    btn.style.opacity = '0.6';
-    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const { error } = await sb.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: 'https://app.everledge.co.uk/' },
-    });
-    if (error) {
-      alertEl.textContent = error.message;
-      alertEl.style.display = 'block';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }
+  function signInWithGoogle() {
+    const redirectTo = encodeURIComponent('https://app.everledge.co.uk/');
+    window.location.href = 'https://vzanekapmmnjspbbydek.supabase.co/auth/v1/authorize?provider=google&redirect_to=' + redirectTo;
   }
 
   // Wire up all "Get started" buttons to open the modal
