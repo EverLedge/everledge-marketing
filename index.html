@@ -109,7 +109,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <style>
   :root {
     --m-navy:        #131D27;
@@ -302,7 +302,7 @@
   .trust-item h4 { font-size: 17px; color: #fff; margin: 0; }
   .trust-item p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
-  .footer-top { border-top: 1px solid rgba(255,255,255,0.1); padding: 56px 0 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
+  .footer-top { border-top: 1px solid rgba(255,255,255,0.1); padding: 56px 0 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
   .footer-brand img { height: 26px; margin-bottom: 14px; }
   .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 260px; }
   .footer-col h5 { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
@@ -321,6 +321,20 @@
     .nav-links { display: none; }
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     .app-window { transform: none !important; }
+    .app-body { grid-template-columns: 108px 1fr; }
+    .app-sidebar { padding: 14px 8px; }
+    .app-sidebar-logo { gap: 6px; margin-bottom: 12px; }
+    .app-sidebar-logo span { font-size: 11.5px; }
+    .app-nav-item { padding: 6px 8px; font-size: 10.5px; gap: 6px; }
+    .app-nav-item svg { width: 12px; height: 12px; }
+    .app-main { padding: 16px 14px; }
+    .app-figure { font-size: 20px; flex-wrap: wrap; gap: 6px 10px; }
+    .app-tiles { gap: 8px; }
+    .app-tile { padding: 8px 10px; }
+    .app-tile-value { font-size: 13px; }
+    .app-pet { padding: 10px 12px; }
+    .app-pet-header { flex-wrap: wrap; gap: 4px; }
+    .app-pet-meta { flex-wrap: wrap; gap: 2px 10px; }
     .solution-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr 1fr; }
     .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -330,6 +344,9 @@
   }
   @media (max-width: 560px) {
     .wrap { padding: 0 20px; }
+    .nav-logo { height: 24px; }
+    .nav-actions { gap: 6px; }
+    .nav-actions .btn { padding: 9px 12px; font-size: 13px; }
     .hero { padding: 56px 0 64px; }
     .hero h1 { font-size: 38px; }
     .hero-sub { font-size: 17px; }
@@ -339,6 +356,9 @@
     .section-head h2, .solution-head h2, .trust-head h2 { font-size: 30px; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 400px) {
+    .nav-actions .btn-ghost { display: none; }
   }
 </style>
 </head>
@@ -587,12 +607,6 @@
         <a href="/executors">For executors</a>
         <a href="https://app.everledge.co.uk">Sign in</a>
       </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Help centre</a>
-      </div>
     </div>
 
     <div class="footer-bottom">
@@ -640,7 +654,7 @@
 </div>
 
 <script>
-  lucide.createIcons();
+  document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
 
   const SUPABASE_URL = 'https://vzanekapmmnjspbbydek.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_eOFaGkpTlT2x8c6wA_mUyg_mb_9b2Mu';

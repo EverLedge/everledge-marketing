@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 <style>
   :root {
     --m-navy:        #131D27;
@@ -165,12 +165,18 @@
   }
   @media (max-width: 560px) {
     .wrap { padding: 0 20px; }
+    .nav-logo { height: 24px; }
+    .nav-actions { gap: 6px; }
+    .nav-actions .btn { padding: 9px 12px; font-size: 13px; }
     .intro { padding: 48px 0 40px; }
     .intro h1 { font-size: 33px; }
     .intro p { font-size: 16px; }
     .path-card { padding: 28px 22px; }
     .section-head h2 { font-size: 27px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 400px) {
+    .nav-actions .btn-ghost { display: none; }
   }
 </style>
 </head>
@@ -349,7 +355,7 @@
 </footer>
 
 <script>
-  lucide.createIcons();
+  document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
 
   function copyTemplate(btn) {
     const text = document.getElementById('template-text').innerText.replace(/^"|"$/g, '');
