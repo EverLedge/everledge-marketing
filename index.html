@@ -379,7 +379,7 @@
       </nav>
       <div class="nav-actions">
         <a href="https://app.everledge.co.uk" class="btn btn-ghost">Sign in</a>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-primary">Get started free</a>
+        <a href="https://app.everledge.co.uk/signup" class="btn btn-primary js-get-started">Get started free</a>
       </div>
     </div>
   </div>
@@ -394,7 +394,7 @@
         <h1>Your estate, organised and <span class="accent">protected.</span></h1>
         <p class="hero-sub">EverLedge brings your gifts, property, executors and documents into one calm, secure place — so the people you love inherit clarity, not paperwork.</p>
         <div class="hero-cta">
-          <a href="https://app.everledge.co.uk/signup" class="btn btn-primary btn-lg">Get started free</a>
+          <a href="https://app.everledge.co.uk/signup" class="btn btn-primary btn-lg js-get-started">Get started free</a>
           <a href="https://app.everledge.co.uk" class="btn btn-secondary btn-lg">Sign in</a>
         </div>
         <div class="hero-trust">
@@ -545,7 +545,7 @@
           <li><i data-lucide="check" class="green"></i> Named executors with access links</li>
           <li><i data-lucide="check" class="green"></i> Executor portal (summary view)</li>
         </ul>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-secondary btn-full">Get started free</a>
+        <a href="https://app.everledge.co.uk/signup" class="btn btn-secondary btn-full js-get-started">Get started free</a>
       </div>
       <div class="price-card featured">
         <div class="price-badge">Most popular</div>
@@ -562,7 +562,7 @@
           <li><i data-lucide="check" class="gold"></i> Executor portal — full estate detail</li>
           <li><i data-lucide="check" class="gold"></i> Cancel any time</li>
         </ul>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-gold btn-full">Get started — £6/mo</a>
+        <a href="https://app.everledge.co.uk/signup" class="btn btn-gold btn-full js-get-started">Get started — £6/mo</a>
       </div>
     </div>
   </div>
@@ -683,7 +683,7 @@
   }
 
   // Wire up all "Get started" buttons to open the modal
-  document.querySelectorAll('a[href="https://app.everledge.co.uk/signup"]').forEach(el => {
+  document.querySelectorAll('a.js-get-started').forEach(el => {
     el.addEventListener('click', openModal);
   });
 </script>
