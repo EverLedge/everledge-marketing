@@ -8,15 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EverLedge — UK Estate Planning &amp; IHT Gift Tracker</title>
 <meta name="description" content="Track lifetime gifts, understand your inheritance tax exposure, store wills and deeds, and give your executors everything they need — all in one secure place. Free to start.">
-<link rel="canonical" href="https://everledge.co.uk/">
+<link rel="canonical" href="https://www.everledge.co.uk/">
 <link rel="icon" type="image/png" href="/assets/EverLedge Fav.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://everledge.co.uk/">
+<meta property="og:url" content="https://www.everledge.co.uk/">
 <meta property="og:title" content="EverLedge — UK Estate Planning &amp; IHT Gift Tracker">
 <meta property="og:description" content="Track lifetime gifts, understand your inheritance tax exposure, store wills and deeds, and give your executors everything they need — all in one secure place.">
-<meta property="og:image" content="https://everledge.co.uk/assets/og-image.png">
+<meta property="og:image" content="https://www.everledge.co.uk/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="EverLedge">
 
@@ -24,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EverLedge — UK Estate Planning &amp; IHT Gift Tracker">
 <meta name="twitter:description" content="Track lifetime gifts, understand your inheritance tax exposure, store wills and deeds, and give your executors everything they need.">
-<meta name="twitter:image" content="https://everledge.co.uk/assets/og-image.png">
+<meta name="twitter:image" content="https://www.everledge.co.uk/assets/og-image.png">
 
 <!-- Structured data: SoftwareApplication -->
 <script type="application/ld+json">
@@ -33,7 +35,7 @@
   "@type": "SoftwareApplication",
   "name": "EverLedge",
   "description": "EverLedge is a UK digital estate planning tool that helps individuals track lifetime gifts, understand inheritance tax exposure, name executors, and store estate documents securely.",
-  "url": "https://everledge.co.uk",
+  "url": "https://www.everledge.co.uk",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
   "offers": [
@@ -54,8 +56,8 @@
   "publisher": {
     "@type": "Organization",
     "name": "EverLedge",
-    "url": "https://everledge.co.uk",
-    "logo": "https://everledge.co.uk/assets/everledge-logo-gold.png"
+    "url": "https://www.everledge.co.uk",
+    "logo": "https://www.everledge.co.uk/assets/everledge-logo-gold.png"
   },
   "areaServed": {
     "@type": "Country",
@@ -100,6 +102,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Only you can see your estate records. You choose if and what to share with executors via a secure access link. EverLedge uses row-level security so no one else — including EverLedge staff — can access your data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my records when I die?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your named executors use their secure access link to see exactly what you've chosen to share — your estate summary, gift history, key contacts and where documents are held — so nothing is lost in a drawer or left to guesswork."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I cancel my Professional subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, at any time from your account — billing is handled entirely by Stripe. Your records stay safe and accessible on the Free plan."
       }
     }
   ]
@@ -316,9 +334,69 @@
   .footer-legal a { font-size: 13px; color: rgba(255,255,255,0.3); transition: color 160ms; }
   .footer-legal a:hover { color: rgba(255,255,255,0.6); }
 
+  /* Mobile nav */
+  .nav-burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; margin: -8px -4px -8px 0; color: var(--m-ink); }
+  .nav-burger svg { width: 24px; height: 24px; display: block; }
+  .mobile-menu { display: none; border-top: 1px solid var(--m-border-soft); background: rgba(247,248,250,0.97); }
+  .mobile-menu-links { display: flex; flex-direction: column; padding: 8px 32px 18px; }
+  .mobile-menu-links a { padding: 13px 0; font-size: 16px; font-weight: 450; color: var(--m-body); border-bottom: 1px solid var(--m-border-soft); }
+  .mobile-menu-links a:last-child { border-bottom: none; }
+  .mobile-menu-links .mobile-menu-signin { color: var(--m-ink); font-weight: 600; }
+
+  /* IHT calculator */
+  .calc { padding: 0 0 100px; }
+  .calc-card {
+    background: var(--m-card); border: 1px solid var(--m-border); border-radius: 16px;
+    box-shadow: var(--m-shadow-lg); padding: 48px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px;
+    max-width: 980px; margin: 0 auto;
+  }
+  .calc-left h2 { font-size: 30px; line-height: 1.15; margin: 14px 0; }
+  .calc-left > p { font-size: 15.5px; line-height: 1.6; color: var(--m-body); margin-bottom: 26px; }
+  .calc-form { display: flex; flex-direction: column; gap: 16px; }
+  .calc-field label { display: block; font-size: 13px; font-weight: 600; color: var(--m-ink); margin-bottom: 6px; }
+  .calc-field input, .calc-field select {
+    width: 100%; height: 44px; padding: 0 14px; border: 1px solid var(--m-border); border-radius: 9px;
+    font-family: var(--font-sans); font-size: 15px; color: var(--m-ink); background: #fff;
+  }
+  .calc-field input:focus, .calc-field select:focus { outline: none; border-color: var(--m-gold); box-shadow: 0 0 0 3px var(--m-gold-soft); }
+  .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .calc-note { margin-top: 18px; font-size: 12.5px; color: var(--m-muted); line-height: 1.55; }
+  .calc-right { display: flex; flex-direction: column; justify-content: center; }
+  .calc-panel { background: var(--m-paper); border: 1px solid var(--m-border); border-radius: 12px; padding: 28px; }
+  .calc-empty { text-align: center; color: var(--m-muted); font-size: 14.5px; line-height: 1.6; padding: 48px 20px; }
+  .calc-empty svg { width: 28px; height: 28px; stroke-width: 1.5; color: var(--m-gold); margin: 0 auto 12px; display: block; }
+  .calc-gate h3 { font-size: 19px; margin-bottom: 8px; }
+  .calc-gate p { font-size: 14px; line-height: 1.6; color: var(--m-body); margin-bottom: 18px; }
+  .calc-gate input {
+    width: 100%; height: 44px; padding: 0 14px; border: 1px solid var(--m-border); border-radius: 9px;
+    font-family: var(--font-sans); font-size: 15px; color: var(--m-ink); background: #fff; margin-bottom: 12px;
+  }
+  .calc-gate input:focus { outline: none; border-color: var(--m-gold); box-shadow: 0 0 0 3px var(--m-gold-soft); }
+  .calc-gate-small { margin-top: 12px; font-size: 12px; color: var(--m-muted); text-align: center; }
+  .calc-res-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--m-muted); margin-bottom: 6px; }
+  .calc-res-figure { font-family: var(--font-mono); font-size: 38px; font-weight: 500; letter-spacing: -0.03em; color: var(--m-ink); margin-bottom: 18px; }
+  .calc-res-rows { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--m-border); }
+  .calc-res-rows > div { display: flex; justify-content: space-between; font-size: 14px; color: var(--m-body); }
+  .calc-res-rows .mono { color: var(--m-ink); }
+  .calc-res-note { font-size: 13px; line-height: 1.6; color: var(--m-body); margin-bottom: 20px; }
+
+  /* FAQ */
+  .faqs { padding: 100px 0; }
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: var(--m-card); border: 1px solid var(--m-border); border-radius: 12px; padding: 0 24px; }
+  .faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 19px 0; font-size: 16.5px; font-weight: 600; color: var(--m-ink); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 22px; font-weight: 400; color: var(--m-muted); transition: transform 200ms var(--ease-standard); flex: none; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 0 20px; font-size: 15px; line-height: 1.65; color: var(--m-body); }
+
   /* Responsive */
   @media (max-width: 980px) {
     .nav-links { display: none; }
+    .nav-burger { display: inline-flex; }
+    .mobile-menu:not([hidden]) { display: block; }
+    .calc-card { grid-template-columns: 1fr; gap: 32px; padding: 28px; }
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     .app-window { transform: none !important; }
     .app-body { grid-template-columns: 108px 1fr; }
@@ -354,6 +432,8 @@
     .hero-cta .btn { width: 100%; justify-content: center; }
     .features-grid { grid-template-columns: 1fr; }
     .section-head h2, .solution-head h2, .trust-head h2 { font-size: 30px; }
+    .calc-left h2 { font-size: 25px; }
+    .calc-row { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
   }
@@ -379,9 +459,24 @@
       </nav>
       <div class="nav-actions">
         <a href="https://app.everledge.co.uk" class="btn btn-ghost">Sign in</a>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-primary js-get-started">Get started free</a>
+        <a href="https://app.everledge.co.uk/signup" class="btn btn-primary">Get started free</a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-menu-links">
+      <a href="#solution">Why EverLedge</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#trust">Security</a>
+      <a href="#faq">FAQ</a>
+      <a href="/executors">For Executors</a>
+      <a href="https://learn.everledge.co.uk" target="_blank" rel="noopener">Learn</a>
+      <a href="https://app.everledge.co.uk" class="mobile-menu-signin">Sign in</a>
+    </nav>
   </div>
 </header>
 
@@ -394,7 +489,7 @@
         <h1>Your estate, organised and <span class="accent">protected.</span></h1>
         <p class="hero-sub">EverLedge brings your gifts, property, executors and documents into one calm, secure place — so the people you love inherit clarity, not paperwork.</p>
         <div class="hero-cta">
-          <a href="https://app.everledge.co.uk/signup" class="btn btn-primary btn-lg js-get-started">Get started free</a>
+          <a href="https://app.everledge.co.uk/signup" class="btn btn-primary btn-lg">Get started free</a>
           <a href="https://app.everledge.co.uk" class="btn btn-secondary btn-lg">Sign in</a>
         </div>
         <div class="hero-trust">
@@ -428,15 +523,15 @@
           </div>
           <div class="app-main">
             <div class="app-eyebrow">Net estate value</div>
-            <div class="app-figure mono">£4.28M <span class="badge-ok">organised</span></div>
+            <div class="app-figure mono">£865,000 <span class="badge-ok">organised</span></div>
             <div class="app-tiles">
               <div class="app-tile">
                 <div class="app-tile-label">Estimated IHT</div>
-                <div class="app-tile-value mono">£412,000</div>
+                <div class="app-tile-value mono">£146,000</div>
               </div>
               <div class="app-tile">
                 <div class="app-tile-label">Lifetime gifts</div>
-                <div class="app-tile-value mono">£250,000</div>
+                <div class="app-tile-value mono">£48,000</div>
               </div>
             </div>
             <div class="app-pet">
@@ -523,6 +618,72 @@
   </div>
 </section>
 
+<!-- IHT calculator -->
+<section class="calc" id="calculator">
+  <div class="wrap">
+    <div class="calc-card">
+      <div class="calc-left">
+        <span class="eyebrow">Quick estimate</span>
+        <h2>What could inheritance tax cost your family?</h2>
+        <p>Answer four questions for a rough picture of your estate's IHT exposure — before you decide anything.</p>
+        <form id="calc-form" class="calc-form">
+          <div class="calc-field">
+            <label for="calc-estate">Total estate value (£)</label>
+            <input type="number" id="calc-estate" min="0" step="1000" placeholder="e.g. 850000" required>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="calc-home">Home left to children (£)</label>
+              <input type="number" id="calc-home" min="0" step="1000" placeholder="0">
+            </div>
+            <div class="calc-field">
+              <label for="calc-gifts">Gifts in last 7 years (£)</label>
+              <input type="number" id="calc-gifts" min="0" step="1000" placeholder="0">
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="calc-status">Your situation</label>
+            <select id="calc-status">
+              <option value="single">Single</option>
+              <option value="married">Married or in a civil partnership</option>
+              <option value="widowed">Widowed — inherited partner's allowance</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-gold">Calculate my estimate</button>
+        </form>
+        <p class="calc-note">A rough guide only, based on the standard £325,000 nil rate band and up to £175,000 residence nil rate band per person. Not tax or financial advice — speak to a professional about your circumstances.</p>
+      </div>
+      <div class="calc-right">
+        <div class="calc-panel">
+          <div class="calc-empty" id="calc-empty">
+            <i data-lucide="calculator"></i>
+            Your estimate will appear here.
+          </div>
+          <div class="calc-gate" id="calc-gate" hidden>
+            <h3>Your estimate is ready</h3>
+            <p>Pop in your email and we'll show it straight away, along with occasional practical IHT planning tips. Unsubscribe any time.</p>
+            <form id="calc-gate-form">
+              <input type="email" id="calc-email" placeholder="you@example.com" autocomplete="email" required>
+              <button type="submit" class="btn btn-primary btn-full">Show my estimate</button>
+            </form>
+            <p class="calc-gate-small">No spam. We never share your email.</p>
+          </div>
+          <div id="calc-results" hidden>
+            <div class="calc-res-label">Estimated inheritance tax</div>
+            <div class="calc-res-figure" id="res-iht">£0</div>
+            <div class="calc-res-rows">
+              <div><span>Allowances applied</span><span class="mono" id="res-allowances"></span></div>
+              <div><span>Taxable estate</span><span class="mono" id="res-taxable"></span></div>
+            </div>
+            <p class="calc-res-note" id="res-note"></p>
+            <a href="https://app.everledge.co.uk/signup" class="btn btn-primary btn-full">Track it properly — free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Pricing -->
 <section class="pricing" id="pricing">
   <div class="wrap">
@@ -545,7 +706,7 @@
           <li><i data-lucide="check" class="green"></i> Named executors with access links</li>
           <li><i data-lucide="check" class="green"></i> Executor portal (summary view)</li>
         </ul>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-secondary btn-full js-get-started">Get started free</a>
+        <a href="https://app.everledge.co.uk/signup" class="btn btn-secondary btn-full">Get started free</a>
       </div>
       <div class="price-card featured">
         <div class="price-badge">Most popular</div>
@@ -562,8 +723,44 @@
           <li><i data-lucide="check" class="gold"></i> Executor portal — full estate detail</li>
           <li><i data-lucide="check" class="gold"></i> Cancel any time</li>
         </ul>
-        <a href="https://app.everledge.co.uk/signup" class="btn btn-gold btn-full js-get-started">Get started — £6/mo</a>
+        <a href="https://app.everledge.co.uk/signup?plan=professional" class="btn btn-gold btn-full">Start with Professional</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faqs" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow center">Common questions</span>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is a Potentially Exempt Transfer (PET)?</summary>
+        <p>A Potentially Exempt Transfer is a gift made to another individual. If the giver survives for 7 years after making the gift, it becomes fully exempt from inheritance tax. EverLedge tracks all your PETs and shows how far each one has progressed toward exemption.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much is the UK inheritance tax nil rate band?</summary>
+        <p>The standard nil rate band is £325,000. An additional residence nil rate band of up to £175,000 applies when a main residence is passed to direct descendants. EverLedge factors both into its IHT estimate.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is EverLedge free to use?</summary>
+        <p>Yes. The core EverLedge features — unlimited gift tracking, estate value, and executor records — are free forever. A Professional plan at £6/month adds the Documents vault, full IHT breakdown, and enhanced executor portal access.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who can see my estate information?</summary>
+        <p>Only you can see your estate records. You choose if and what to share with executors via a secure access link. EverLedge uses row-level security so no one else — including EverLedge staff — can access your data.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to my records when I die?</summary>
+        <p>Your named executors use their secure access link to see exactly what you've chosen to share — your estate summary, gift history, key contacts and where documents are held — so nothing is lost in a drawer or left to guesswork.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I cancel my Professional subscription?</summary>
+        <p>Yes, at any time from your account — billing is handled entirely by Stripe. Your records stay safe and accessible on the Free plan.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -604,6 +801,7 @@
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#trust">Security</a>
+        <a href="#faq">FAQ</a>
         <a href="/executors">For executors</a>
         <a href="https://app.everledge.co.uk">Sign in</a>
       </div>
@@ -624,67 +822,98 @@
   </div>
 </section>
 
-<!-- Signup modal -->
-<div id="signup-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(10,15,24,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:#fff;border-radius:16px;padding:40px;width:100%;max-width:400px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.18);">
-    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#888;font-size:20px;line-height:1;padding:4px;">✕</button>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
-      <img src="/assets/everledge-mark-gold.png" alt="" style="width:28px;height:28px;">
-      <span style="font-weight:600;font-size:1.05rem;color:#131D27;letter-spacing:-0.02em;">EverLedge®</span>
-    </div>
-    <h2 style="margin:0 0 6px;font-size:1.35rem;font-weight:600;color:#131D27;letter-spacing:-0.02em;">Get started free</h2>
-    <p style="margin:0 0 24px;font-size:14px;color:#666;">No credit card required.</p>
-
-    <div id="modal-alert" style="display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:16px;background:#FEE2E2;border:1px solid #E9CFCD;color:#B91C1C;"></div>
-
-    <button id="modal-google-btn" onclick="signInWithGoogle()" style="width:100%;height:44px;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;font-family:inherit;transition:box-shadow 140ms;">
-      <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
-      Continue with Google
-    </button>
-
-    <div style="display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#999;font-size:12px;">
-      <div style="flex:1;height:1px;background:#e5e7eb;"></div>or<div style="flex:1;height:1px;background:#e5e7eb;"></div>
-    </div>
-
-    <a href="https://app.everledge.co.uk/signup" style="width:100%;height:44px;background:#131D27;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;font-family:inherit;">Sign up with email</a>
-
-    <p style="margin:16px 0 0;font-size:12px;color:#999;text-align:center;">Already have an account? <a href="https://app.everledge.co.uk" style="color:#131D27;font-weight:500;">Sign in</a></p>
-    <p style="margin:12px 0 0;font-size:11px;color:#bbb;text-align:center;line-height:1.5;">By continuing you agree to EverLedge's <a href="/terms" style="color:#bbb;">Terms</a> and <a href="/privacy" style="color:#bbb;">Privacy Policy</a>.</p>
-  </div>
-</div>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () { lucide.createIcons(); });
 
   const SUPABASE_URL = 'https://vzanekapmmnjspbbydek.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_eOFaGkpTlT2x8c6wA_mUyg_mb_9b2Mu';
 
-  function openModal(e) {
-    if (e) e.preventDefault();
-    const m = document.getElementById('signup-modal');
-    m.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    const m = document.getElementById('signup-modal');
-    m.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  document.getElementById('signup-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+  // Mobile menu
+  const burger = document.getElementById('nav-burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', function () {
+    const open = mobileMenu.hasAttribute('hidden');
+    if (open) { mobileMenu.removeAttribute('hidden'); } else { mobileMenu.setAttribute('hidden', ''); }
+    burger.setAttribute('aria-expanded', String(open));
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', function () {
+    mobileMenu.setAttribute('hidden', '');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // IHT calculator
+  const NRB = 325000, RNRB = 175000, RNRB_TAPER_THRESHOLD = 2000000, IHT_RATE = 0.4;
+  const fmtGBP = n => '£' + Math.round(n).toLocaleString('en-GB');
+
+  function calculateIht(estate, home, gifts, mult) {
+    let rnrb = Math.min(RNRB * mult, home);
+    if (estate > RNRB_TAPER_THRESHOLD) rnrb = Math.max(0, rnrb - (estate - RNRB_TAPER_THRESHOLD) / 2);
+    const nrbAvailable = Math.max(0, NRB * mult - gifts);
+    const allowances = nrbAvailable + rnrb;
+    const taxable = Math.max(0, estate - allowances);
+    return { allowances, taxable, iht: taxable * IHT_RATE };
+  }
+
+  const calcForm = document.getElementById('calc-form');
+  const calcGate = document.getElementById('calc-gate');
+  const calcResults = document.getElementById('calc-results');
+  let pendingResult = null;
+
+  calcForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const estate = Number(document.getElementById('calc-estate').value) || 0;
+    const home = Number(document.getElementById('calc-home').value) || 0;
+    const gifts = Number(document.getElementById('calc-gifts').value) || 0;
+    const status = document.getElementById('calc-status').value;
+    const mult = status === 'single' ? 1 : 2;
+    pendingResult = { estate, status, ...calculateIht(estate, Math.min(home, estate), gifts, mult) };
+    document.getElementById('calc-empty').hidden = true;
+    if (localStorage.getItem('el_lead_email')) {
+      showResults();
+    } else {
+      calcResults.hidden = true;
+      calcGate.hidden = false;
+      document.getElementById('calc-email').focus();
+    }
   });
 
-  function signInWithGoogle() {
-    const redirectTo = encodeURIComponent('https://app.everledge.co.uk/');
-    window.location.href = 'https://vzanekapmmnjspbbydek.supabase.co/auth/v1/authorize?provider=google&redirect_to=' + redirectTo;
+  function showResults() {
+    const r = pendingResult;
+    document.getElementById('res-iht').textContent = fmtGBP(r.iht);
+    document.getElementById('res-allowances').textContent = fmtGBP(r.allowances);
+    document.getElementById('res-taxable').textContent = fmtGBP(r.taxable);
+    document.getElementById('res-note').textContent =
+      r.iht === 0
+        ? 'On these figures your estate falls within its allowances — but gifts, growth and rule changes can alter that. Keeping a record now protects that position.'
+        : (r.status === 'married'
+          ? 'Assumes everything passes to your partner first, so this is the combined position on the second death.'
+          : 'Lifetime gifts can reduce this — if you survive 7 years after a gift, it leaves your estate entirely.');
+    calcGate.hidden = true;
+    calcResults.hidden = false;
   }
 
-  // Wire up all "Get started" buttons to open the modal
-  document.querySelectorAll('a.js-get-started').forEach(el => {
-    el.addEventListener('click', openModal);
+  document.getElementById('calc-gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('calc-email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    localStorage.setItem('el_lead_email', email);
+    fetch(SUPABASE_URL + '/rest/v1/marketing_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email: email,
+        source: 'iht-calculator',
+        estate_value: pendingResult.estate,
+        iht_estimate: Math.round(pendingResult.iht)
+      })
+    }).catch(function () {});
+    if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'iht-calculator' });
+    showResults();
   });
 </script>
 </body>

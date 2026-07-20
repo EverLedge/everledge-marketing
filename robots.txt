@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://everledge.co.uk/sitemap.xml
+Sitemap: https://www.everledge.co.uk/sitemap.xml
