@@ -360,6 +360,7 @@
     font-family: var(--font-sans); font-size: 15px; color: var(--m-ink); background: #fff;
   }
   .calc-field input:focus, .calc-field select:focus { outline: none; border-color: var(--m-gold); box-shadow: 0 0 0 3px var(--m-gold-soft); }
+  .calc-hint { display: block; margin-top: 6px; font-size: 11.5px; line-height: 1.45; color: var(--m-muted); }
   .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .calc-note { margin-top: 18px; font-size: 12.5px; color: var(--m-muted); line-height: 1.55; }
   .calc-right { display: flex; flex-direction: column; justify-content: center; }
@@ -633,8 +634,9 @@
           </div>
           <div class="calc-row">
             <div class="calc-field">
-              <label for="calc-home">Home left to children (£)</label>
+              <label for="calc-home">Of which, home left to children (£)</label>
               <input type="number" id="calc-home" min="0" step="1000" placeholder="0">
+              <span class="calc-hint">Part of your total above, not extra — it unlocks the £175,000 residence allowance.</span>
             </div>
             <div class="calc-field">
               <label for="calc-gifts">Gifts in last 7 years (£)</label>
